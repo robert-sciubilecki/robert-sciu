@@ -1,0 +1,206 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  text-align: center;
+  color: white;
+  background: rgb(6, 10, 43);
+  background: linear-gradient(
+    90deg,
+    rgb(4, 9, 48) 0%,
+    rgba(0, 0, 0, 1) 50%,
+    rgb(4, 9, 48) 100%
+  );
+
+  margin-bottom: 300px;
+}
+/* Navigation */
+
+.nav-links a:link,
+.nav-links a:visited,
+.nav-links a:hover,
+.nav-links a:active {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+}
+
+.nav {
+  margin-bottom: 7rem;
+  height: 300px;
+}
+
+.main-header {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+}
+
+.main-header > * {
+  margin: 0.5rem;
+}
+
+.header-img {
+  width: 60px;
+}
+
+.header-title {
+  font-family: "Belanosima", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.nav-link {
+  display: inline-block;
+  transition: all 0.5s;
+  padding: 7px 25px;
+}
+
+.hover-border {
+  position: relative;
+  display: inline-block;
+  transition: 0.3s;
+  padding: 7px 25px;
+}
+
+.hover-border::before,
+.hover-border::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 2px solid transparent;
+  transition: 0.2s;
+}
+
+.hover-border::before {
+  bottom: -2.8px;
+  left: -2.8px;
+}
+
+.hover-border::after {
+  top: -1px;
+  right: -1px;
+}
+
+.hover-border:hover::before {
+  width: 100%;
+  height: 100%;
+  border-bottom-color: #e6bf12;
+  border-right-color: #e6bf12;
+}
+
+.hover-border:hover::after {
+  width: 100%;
+  height: 100%;
+  border-top-color: #e6bf12;
+  border-left-color: #e6bf12;
+}
+
+/* page */
+
+.main {
+  width: 70%;
+  margin: auto;
+}
+
+/* album */
+
+.album-section {
+  display: flex;
+}
+
+.album-cover,
+.album-cover-img {
+  position: relative;
+  height: 400px;
+  width: 400px;
+  border-radius: 0.5rem;
+}
+
+.album-cover {
+  flex: 0 0 400px;
+  float: left;
+  padding: 4px;
+}
+
+.album-description {
+  display: flex;
+  text-align: right;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  line-height: 2;
+  margin-left: 40px;
+}
+
+.album-more-btn {
+  height: 40px;
+  width: 100px;
+  font-weight: bold;
+  font-size: large;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.album-more-btn:hover {
+  background-color: #e6bf12;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.album-more-btn a:link,
+.album-more-btn a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.album-more-btn a:hover,
+.album-more-btn a:active {
+  color: black;
+}
+
+/* cover glow */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+.album-cover::before,
+.album-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    rgb(159, 26, 199),
+    rgb(7, 109, 21),
+    rgb(55, 0, 255),
+    rgb(7, 109, 21),
+    rgb(159, 26, 199)
+  );
+  z-index: -1;
+  border-radius: inherit;
+  animation: rotation 15s linear infinite;
+}
+
+.album-cover::after {
+  filter: blur(4rem);
+}
